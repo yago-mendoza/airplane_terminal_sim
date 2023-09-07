@@ -7,51 +7,65 @@ This project simulates the operations of airplanes and gates (terminals) using M
 
 ## Prerequisites
 
-- **Python 3.x:** Ensure Python 3 is installed.
-- **Paho MQTT library:** Required for MQTT communication.
+- **Python 3.x:** ensure Python 3 is installed.
+- **Paho MQTT library:** required for MQTT communication.
+  
   ```bash
   pip install paho-mqtt
   ```
-- **MQTT Broker:** For local testing, you can use Mosquitto, an open-source MQTT broker. Follow the [installation guide](https://mosquitto.org/download/) for your operating system.
+- **MQTT Broker:** for local testing, you can use Mosquitto, an open-source MQTT broker. Follow the [installation guide](https://mosquitto.org/download/) for your operating system.
 
 ## Running the Simulation
 
-### Standard Execution:
 
-1. **Start the MQTT Broker:** If using Mosquitto, run `mosquitto` in a terminal.
-2. **Run the Simulation:** Navigate to the project directory and run:
-   ```bash
-   python central.py
-   ```
+1. **Start the MQTT Broker:** 
+   - Search for "Mosquitto Broker" in the Start menu and click on it to run.
+   - Alternatively, open a command prompt and run:
+     
+     ```bash
+     mosquitto
+     ```
+   Ensure the broker is running without errors. It will listen for incoming MQTT messages.
 
-### Linux Alternative (No-Extension Script Files):
+2. **Run the Simulation:** 
+   - Open a new command prompt.
+   - Navigate to the directory where you extracted the project files using the `cd` command.
+   - Once in the project directory, run:
+     
+     ```bash
+     python central.py
+     ```
+   This will start the simulation, and you should see output related to airplanes and gates based on the logic in the code.
 
-1. **Start the MQTT Broker:** If using Mosquitto, run `mosquitto` in a terminal.
-2. **Grant Execute Permissions:** Navigate to the project directory and grant execute permissions to the script files:
-   ```bash
-   chmod +x filename
-   ```
-   Replace `filename` with the name of each script file you want to make executable.
-3. **Run the Simulation:** Run the main simulation script directly:
-   ```bash
-   ./central
-   ```
+3. **Monitor the MQTT Messages (Optional):**
+   - If you want to see the MQTT messages being published and subscribed, you can use Mosquitto's command-line clients.
+   - Open a new command prompt and run:
+     
+     ```bash
+     mosquitto_sub -v -t '#'
+     ```
+   This command subscribes to all messages, allowing you to monitor the communication.
+
+4. **Stop the Simulation:** 
+   - Return to the command prompt where the simulation is running.
+   - Press `CTRL+C` to stop the simulation.
+
+5. **Stop the MQTT Broker:** 
+   - Return to the command prompt where the Mosquitto broker is running.
+   - Press `CTRL+C` to stop the broker.
 
 ## Structure
 
-- `airplane`: Defines the behavior and properties of airplanes.
-- `gate`: Represents a gate (or terminal) in the airport.
-- `flight_route`: Manages flight routes with expected times.
-- `display_board`: Represents the display board at each gate.
-- `utilities`: Contains utility functions used across the project.
-- `constants`: Defines constants for the system.
-- `timer`: Contains a timer class for tracking elapsed time.
-- `line_manager`: Manages operations related to flight routes.
-- `ordered_list`: Manages ordered lists used in the project.
-- `central`: Main driver of the simulation, initializing and activating airplanes and gates.
-- `draft`: Contains draft or test code (for development use).
+- `airplane`: defines the behavior and properties of airplanes.
+- `gate`: represents a gate (or terminal) in the airport.
+- `flight_route`: manages flight routes with expected times.
+- `display_board`: represents the display board at each gate.
+- `utilities`: contains utility functions used across the project.
+- `constants`: defines constants for the system.
+- `timer`: contains a timer class for tracking elapsed time.
+- `line_manager`: manages operations related to flight routes.
+- `ordered_list`: manages ordered lists used in the project.
+- `central`: main driver of the simulation, initializing and activating airplanes and gates.
+- `draft`: contains draft or test code (for development use).
 
-## Note
-
-Ensure the MQTT broker is running before starting the simulation.
 
